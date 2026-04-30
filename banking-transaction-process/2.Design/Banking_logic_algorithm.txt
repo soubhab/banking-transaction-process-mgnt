@@ -1,0 +1,25 @@
+Algorithm of this Banking Process
+
+Deposit
+1. Validate amount > 0
+2. Lock account row (FOR UPDATE)
+3. Increase balance
+4. Insert transaction record
+5. Commit
+
+Withdraw
+1. Validate amount > 0
+2. Lock account row
+3. Check balance >= amount
+4. Deduct balance
+5. Insert transaction
+6. Commit
+
+Transfer
+1. Validate accounts & amount
+2. Lock both accounts (consistent order to avoid deadlock)
+3. Check sender balance
+4. Deduct from sender
+5. Add to receiver
+6. Insert two ledger entries
+7. Commit
